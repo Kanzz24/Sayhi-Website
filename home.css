@@ -1,0 +1,714 @@
+:root {
+  --blue-accent: #358DDF;
+  --blue-nav: #419AFF;
+  --blue-deep: #1D4D79;
+  --blue-outline: #49C3EF;
+  --blue-footer-start: #C0E5FB;
+  --blue-footer-end: #0856B2;
+  --gray-text: #313131;
+  --ink: #090909;
+  --track: #807D7D;
+  --thumb: #D9D9D9;
+
+  /* Typography */
+  --font-nav: 'Instrument Sans', sans-serif;
+  --font-heading-serif: 'Judson', serif;
+  --font-hero: 'Inclusive Sans', sans-serif;
+  --font-works: 'Ibarra Real Nova', serif;
+  --font-view-all: 'NTR', sans-serif;
+  --font-more: 'Noto Serif Bengali', serif;
+  --font-footer-logo: 'K2D', sans-serif;
+
+  /* Gradients */
+  --grad-text: linear-gradient(79deg, #000 3.5%, #368DDF 64%);
+  --grad-btn: linear-gradient(114deg, #61BDFF 15%, #8196FF 95%);
+  --grad-card: linear-gradient(180deg, #358DDF, #1D4D79);
+  --grad-footer: linear-gradient(159deg, #C0E5FB 14%, #0856B2 74%);
+  --grad-divider: linear-gradient(90deg, transparent, var(--blue-outline), transparent);
+
+  /* Radius */
+  --radius-btn: 22.5px;
+  --radius-pill: 60px;
+  --radius-card-outer: 69px;
+  --radius-card-inner: 50px;
+}
+
+/* Colors - Dark Theme (เมื่อสลับโหมด) */
+[data-theme="dark"] {
+  --bg-primary: #121212; /* พื้นหลังมืดสไตล์ Midnight Blue / Dark */
+  --ink: #F0F0F0; /* ตัวอักษรสีอ่อน */
+  --gray-text: #A0A0A0; /* สีข้อความรองสว่างขึ้น */
+  --nav-bg: rgba(30, 30, 30, 0.85); /* พื้นหลัง Nav มืด */
+  --card-bg: #1E1E1E; /* การ์ดสีเทาเข้ม */
+  --hero-bg-color: #1A1A1A;
+  
+  --grad-text: linear-gradient(79deg, #FFFFFF 3.5%, #61BDFF 64%);
+}
+
+/* =========================================
+   2. Base Resets & Utilities (แก้ไขให้ผูกกับ Variable)
+========================================= */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-nav);
+  color: var(--ink);
+  background-color: var(--bg-primary); /* เปลี่ยนให้ใช้ตัวแปร */
+  transition: background-color 0.3s ease, color 0.3s ease; /* ให้สลับสีแบบนุ่มนวล */
+  overflow-x: clip;
+}
+
+/* =========================================
+   Toggle Switch (Dark Mode) ตามรูปภาพ
+========================================= */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.theme-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+}
+
+.theme-switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #FFFFFF; /* พื้นหลังสวิตช์สีขาว */
+  transition: .4s;
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 4px;
+  bottom: 4px;
+  background-color: #FFA756; /* วงกลมสีส้มตามรูป */
+  transition: .4s;
+}
+
+/* เมื่อสวิตช์ถูกกด (เปิด Dark Mode) */
+input:checked + .slider {
+  background-color: #2C2C2C; /* พื้นหลังสวิตช์มืดลงเมื่อเปิดโหมดมืด */
+}
+
+input:checked + .slider:before {
+  transform: translateX(24px); /* เลื่อนวงกลมไปทางขวา */
+  background-color: #419AFF; /* วงกลมเปลี่ยนเป็นสีฟ้า */
+}
+
+/* รูปร่างแคปซูล (Pill shape) */
+.slider.round {
+  border-radius: 34px;
+}
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* =========================================
+   แก้ไขสีองค์ประกอบต่างๆ ให้รองรับ Dark Mode
+========================================= */
+.main-nav {
+  background: var(--nav-bg);
+  transition: background-color 0.3s ease;
+}
+.menu-links a { color: var(--ink); }
+.hero-bg { background: linear-gradient(to bottom, transparent, var(--bg-primary)), var(--hero-bg-color); }
+.work-card { background: var(--card-bg); transition: background-color 0.3s ease; }
+.card-label { color: var(--gray-text); }
+.more-btn { color: var(--ink); }
+.wire-box { border-color: var(--gray-text); }
+.faq-label { color: var(--gray-text); }
+
+
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; padding: 0;
+  font-family: var(--font-nav);
+  color: var(--ink);
+  overflow-x: clip; /* ป้องกันแนวนอนล้นจอ */
+}
+
+/* =========================================
+   Gallery Section
+========================================= */
+.gallery-section {
+  position: relative;
+  width: 100%;
+  padding: 4rem 0 2rem 0;
+  text-align: center;
+  overflow: hidden;
+}
+
+.gallery-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 3rem;
+  padding: 0 1rem;
+}
+
+/* Label: SAY HI INCORPORATED (ขนาด 32px ตามดีไซน์) */
+.gallery-header .label {
+  font-family: var(--font-works);
+  font-size: clamp(18px, 2.2vw, 32px);
+  color: var(--gray-text);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+/* หัวข้อ GALLERY (ฟอนต์ Judson 128px พร้อมขีดเส้นใต้ ตามดีไซน์) */
+.section-title1 {
+  font-family: var(--font-heading-serif);
+  font-size: clamp(60px, 9vw, 128px);
+  color: var(--blue-nav);
+  text-decoration: underline;
+  text-underline-offset: 12px;
+  text-decoration-thickness: 3px;
+  margin: 0;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+/* Responsive adjustment for Mobile */
+@media (max-width: 768px) {
+  .gallery-section {
+    padding: 2rem 0 1rem 0;
+  }
+  .gallery-header {
+    margin-bottom: 1.5rem;
+  }
+  .section-title1 {
+    text-underline-offset: 6px;
+    text-decoration-thickness: 2px;
+  }
+}
+
+.text-gradient {
+  background: var(--grad-text);
+}
+.divider {
+  height: 2px;
+  background: var(--grad-divider);
+  width: min(100%, 1253px);
+  margin: 4rem auto;
+}
+
+/* Navigation */
+.main-nav {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(90%, 637px);
+  height: 70px;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-pill);
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+}
+.nav-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+.menu-links a {
+  text-decoration: none;
+  color: var(--ink);
+  font-size: clamp(16px, 1.5vw, 24px);
+  margin: 0 0.5rem;
+}
+.menu-links a.active {
+  color: var(--blue-nav);
+  font-weight: bold;
+  text-decoration: underline;
+}
+.search-btn, .hamburger-btn {
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+.hamburger-btn { display: none; }
+
+/* Hero & Marquee */
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent, white), #EAEAEA; /* ใช้รูปจริง .webp ทับตรงนี้ */
+  z-index: -1;
+}
+.hero-title {
+  font-family: var(--font-hero);
+  font-size: clamp(4rem, 15vw, 300px);
+  color: rgba(255,255,255,0.1);
+  text-shadow: 11px 12px 4px rgba(0,0,0,0.25);
+  margin: 0;
+  text-align: center;
+}
+.marquee-container {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.marquee-row { display: flex; overflow: hidden; }
+.marquee-content {
+  display: flex;
+  gap: 1rem;
+  animation: scroll 30s linear infinite;
+}
+.marquee-content.reverse { animation-direction: reverse; }
+.marquee-container:hover .marquee-content { animation-play-state: paused; }
+.grid-img {
+  width: clamp(150px, 20vw, 293px);
+  height: clamp(150px, 20vw, 301px);
+  background: #D9D9D9;
+  flex-shrink: 0;
+}
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); } /* เลื่อนเต็ม 1 block แล้ววน */
+}
+
+/* Selected Works */
+.selected-works { padding: 0 1rem; max-width: 1440px; margin: 0 auto; }
+.works-wrapper {
+  background: var(--grad-card);
+  border-radius: var(--radius-card-outer);
+  padding: 3rem;
+  overflow: hidden;
+}
+.works-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+.works-title {
+  font-family: var(--font-works);
+  font-size: clamp(1.5rem, 3vw, 40px);
+  color: white;
+  letter-spacing: 2.8px;
+  margin: 0;
+}
+.view-all-btn {
+  font-family: var(--font-view-all);
+  color: white;
+  border: 2px solid var(--blue-outline);
+  border-radius: var(--radius-pill);
+  padding: 0.5rem 1.5rem;
+  text-decoration: none;
+}
+.cards-scroll {
+  display: flex;
+  gap: 2rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+.cards-scroll::-webkit-scrollbar { display: none; }
+.work-card {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  width: clamp(280px, 40vw, 380px);
+  height: clamp(500px, 60vh, 691px);
+  background: white;
+  border-radius: var(--radius-card-inner);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+.featured-card {
+  width: clamp(300px, 45vw, 398px);
+  height: clamp(520px, 65vh, 724px);
+}
+.card-title {
+  font-family: var(--font-works);
+  color: var(--blue-accent);
+  font-size: clamp(1.2rem, 2.5vw, 40px);
+  margin-top: 10px;
+}
+.more-btn {
+  align-self: flex-start;
+  font-family: var(--font-more);
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 25px;
+}s
+
+
+.card-label {
+  font-family: var(--font-works);
+  color: var(--gray-text);
+  font-size: 20px;
+  margin-top: 20px;
+}
+/* Custom Scrollbar CSS */
+.custom-scrollbar {
+  margin-top: 2rem;
+  padding: 0 2rem;
+}
+.track {
+  height: 8px;
+  background: var(--track);
+  border-radius: 4px;
+  position: relative;
+}
+.thumb {
+  height: 100%;
+  width: 33%;
+  background: var(--thumb);
+  border-radius: 4px;
+  position: absolute;
+  left: 0;
+  transition: transform 0.1s ease-out;
+}
+
+/* Wireframe Placeholder Boxes (ลวดลายกากบาท) */
+.wire-box {
+  background-color: transparent;
+  border: 1px solid var(--gray-text);
+  position: relative;
+  overflow: hidden;
+}
+.wire-box::before, .wire-box::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-bottom: 1px solid var(--gray-text);
+}
+.wire-box::before { transform: translateY(-50%) rotate(45deg); transform-origin: center; }
+.wire-box::after { transform: translateY(-50%) rotate(-45deg); transform-origin: center; }
+
+/* -----------------------------------
+   FAQ Section
+------------------------------------ */
+.faq-section {
+  position: relative;
+  width: 100%;
+  min-height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 0;
+  overflow: hidden;
+}
+
+/* =========================================
+   1. แก้ไข Text Gradient (ตัดสี่เหลี่ยมสีฟ้าออก)
+========================================= */
+.text-gradient {
+  background: linear-gradient(79deg, #000000 3.5%, #368DDF 64%);
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+  display: inline-block; /* บังคับขนาดกล่องให้พอดีกับตัวอักษร */
+}
+
+/* =========================================
+   2. แก้ไข FAQ Section (เอาพื้นหลังออก)
+========================================= */
+.faq-center {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  background: transparent; /* เอาพื้นหลังขาวออก */
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* =========================================
+   3. แก้ไข Our Team Section (เอาพื้นหลังออก)
+========================================= */
+.team-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 10;
+  background: transparent; /* เอาพื้นหลังโปร่งแสงออก */
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+
+.staggered-left { 
+  transform: translateX(20%) translateY(var(--parallax-y, 0px)); 
+}
+.staggered-right { 
+  transform: translateX(20%) translateY(var(--parallax-y, 0px)); 
+}
+
+
+.faq-bg {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: space-between;
+  z-index: 1;
+  pointer-events: none;
+}
+.faq-side { display: flex; flex-direction: column; gap: 1rem; padding-top: 1rem; }
+.left-side { align-items: flex-start; }
+.right-side { align-items: flex-end; }
+.faq-row { display: flex; gap: 1rem; }
+.faq-row .wire-box { width: 160px; height: 90px; }
+
+
+.staggered-left { transform: translateX(20%); }
+.staggered-right { transform: translateX(20%); }
+
+.faq-center {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  background: white; /* บังเส้นกล่องด้านหลังให้ข้อความอ่านง่าย */
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.faq-label {
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: var(--gray-text);
+  margin-bottom: 0.5rem;
+}
+.faq-title {
+  font-family: var(--font-heading-serif);
+  font-size: clamp(80px, 10vw, 200px); /* ตามดีไซน์ 200px */
+  margin: 0 0 1rem 0;
+  line-height: 1;
+}
+
+/* -----------------------------------
+   Buttons
+------------------------------------ */
+.pill-btn {
+  font-family: var(--font-nav);
+  font-weight: bold;
+  padding: 0.8rem 2.5rem;
+  border-radius: var(--radius-pill);
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 16px;
+}
+.btn-blue {
+  background: var(--grad-btn);
+  color: white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.btn-gray {
+  background: #E0E4E7; /* สีเทาอ่อนตามภาพ */
+  color: #1D4D79; 
+}
+
+/* =========================================
+   แก้ไขเส้นกากบาท X ให้เฉียงเต็มมุมทุกสัดส่วนกล่อง
+========================================= */
+.wire-box {
+  background-color: transparent;
+  border: 1px solid var(--gray-text);
+  position: relative;
+  overflow: hidden;
+  /* วาดเส้น X จากมุมสู่มุมด้วย linear-gradient */
+  background-image: 
+    linear-gradient(to top right, transparent calc(50% - 0.5px), var(--gray-text) calc(50% - 0.5px), var(--gray-text) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
+    linear-gradient(to bottom right, transparent calc(50% - 0.5px), var(--gray-text) calc(50% - 0.5px), var(--gray-text) calc(50% + 0.5px), transparent calc(50% + 0.5px));
+}
+
+/* ลบ Pseudo-element เดิมออกเพื่อไม่ให้เส้นซ้อนกัน */
+.wire-box::before, 
+.wire-box::after {
+  display: none !important;
+}
+
+/* =========================================
+   Our Team Section (แก้ไขเพื่อรองรับ JS Scroll)
+========================================= */
+.our-team-section {
+  position: relative;
+  width: 100%;
+  height: clamp(400px, 60vh, 531px);
+  margin: 4rem 0 6rem 0;
+  overflow: hidden;
+}
+
+.team-bg-grid {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+  height: 100%;
+  padding: 0 1.5rem;
+  overflow-x: auto;
+  /* เอา scroll-snap-type ออก เพื่อไม่ให้ล็อคการสไลด์ของ JS */
+  scrollbar-width: none;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: pan-x; /* เปิดให้ปัดบนมือถือได้ลื่นไหล */
+}
+
+.team-bg-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.team-bg-grid.active {
+  cursor: grabbing;
+}
+
+/* ป้องกันกล่องหดขนาด (บังคับกว้าง 293px แน่นอน) */
+.tall-box {
+  flex: 0 0 293px !important;
+  flex-shrink: 0 !important;
+  width: 293px;
+  height: 100%;
+  border: 1px solid var(--gray-text);
+  border-radius: 4px;
+}
+
+.team-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 10;
+  background: transparent;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none; /* ให้คลิกลากทะลุลงไปโดน .team-bg-grid ด้านหลัง */
+}
+
+.team-overlay button,
+.team-overlay .btn-gray {
+  pointer-events: auto; /* ปุ่มกดได้ปกติ */
+}
+
+/* -----------------------------------
+   Footer Section
+------------------------------------ */
+.site-footer {
+  background: var(--grad-footer);
+  padding: 4rem 2rem;
+  color: white;
+}
+.footer-top {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 3rem;
+}
+.footer-brand { display: flex; flex-direction: column; gap: 0.5rem; }
+.logo-box {
+  width: 100px;
+  height: 100px;
+  background: white;
+  border: 2px solid var(--ink);
+}
+.footer-title-sayhi {
+  font-family: var(--font-footer-logo);
+  font-size: 60px;
+  color: white;
+  margin: 0.5rem 0 0 0;
+  line-height: 1;
+}
+/* อีเมลเป็นสีดำและขีดเส้นใต้ ตามรูป */
+.footer-email {
+  color: #000000;
+  text-decoration: underline;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+
+
+.link-col a {
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 500;
+}
+.link-col a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive เสริม */
+@media (max-width: 768px) {
+  .footer-top { flex-direction: column; }
+  .footer-links { gap: 2rem; }
+  .faq-side { display: none; /* ซ่อนกรอบ wireframe ด้านข้างในจอมือถือเพื่อไม่ให้รก */ }
+  .team-overlay { padding: 1rem 2rem; width: 90%; }
+}
+
+
+
+/* คลาสเริ่มต้นสำหรับซ่อนองค์ประกอบ (ก่อนเลื่อนจอมาถึง) */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* คลาสเมื่อต้องการให้แสดงผล (JS จะเป็นตัวเติมคลาสนี้ให้) */
+.animate-on-scroll.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ตั้งค่า Delay ให้กับกล่องรูปภาพในการ์ด Selected Works (ให้โผล่มาทีละอัน) */
+.work-card:nth-child(1) { transition-delay: 0.1s; }
+.work-card:nth-child(2) { transition-delay: 0.2s; }
+.work-card:nth-child(3) { transition-delay: 0.3s; }
+.work-card:nth-child(4) { transition-delay: 0.4s; }
+
+/* Parallax Box ให้เคลื่อนไหวลื่นไหล */
+.wire-box {
+  transition: transform 0.1s ease-out;
+}
+
+
+

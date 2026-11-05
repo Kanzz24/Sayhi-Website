@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAY HI INCORPORATED</title>
+
+  <link rel="stylesheet" href="home.css">
+</head>
+<body>
+
+  <nav class="main-nav">
+    <div class="nav-container">
+      <div class="logo"></div>
+      <div class="menu-links">
+        <a href="/" class="active">Home</a>
+        <a href="/work">Work</a>
+        <a href="/team">Team</a>
+        <a href="/contact">Contact</a>
+      </div>
+      <div class="nav-actions">
+        <button class="search-btn" aria-label="Search">🔍</button>
+        <label class="theme-switch" for="checkbox">
+          <input type="checkbox" id="checkbox" />
+          <div class="slider round"></div>
+        </label>
+        
+      </div>
+      <button class="hamburger-btn" aria-label="Menu">☰</button>
+    </div>
+  </nav>
+
+  <header class="hero-section">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+    </div>
+
+    <!-- Marquee -->
+    <div class="marquee-container">
+      <div class="marquee-row marquee-top">
+        <div class="marquee-content">
+          <!-- 10 placeholders for loop -->
+          <div class="grid-img"></div><div class="grid-img"></div><div class="grid-img"></div><div class="grid-img"></div><div class="grid-img"></div>
+          <div class="grid-img"></div><div class="grid-img"></div><div class="grid-img"></div><div class="grid-img"></div><div class="grid-img"></div>
+        </div>
+        <div class="marquee-content" aria-hidden="true">
+          <div class="grid-img"></div><div class="grid-img"></div><div class="grid-img"></div><div class="grid-img"></div><div class="grid-img"></div>
+          <div class="grid-img"></div><div class="grid-img"></div><div class="grid-img"></div><div class="grid-img"></div><div class="grid-img"></div>
+        </div>
+      </div>
+      <div class="marquee-row marquee-bottom">
+        <div class="marquee-content reverse">
+          <div class="grid-img"></div><div class="grid-img"></div><div class="grid-img"></div><div class="grid-img"></div><div class="grid-img"></div>
+          <div class="grid-img"></div><div class="grid-img"></div><div class="grid-img"></div><div class="grid-img"></div><div class="grid-img"></div>
+        </div>
+        <div class="marquee-content reverse" aria-hidden="true">
+          <div class="grid-img"></div><div class="grid-img"></div><div class="grid-img"></div><div class="grid-img"></div><div class="grid-img"></div>
+          <div class="grid-img"></div><div class="grid-img"></div><div class="grid-img"></div><div class="grid-img"></div><div class="grid-img"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Gallery Section -->
+  <section class="gallery-section">
+    <div class="gallery-header">
+      <span class="label">SAY HI INCORPORATED</span>
+      <h2 class="section-title1">GALLERY</h2>
+    </div>
+  </section>
+
+
+  <div class="divider"></div>
+  <!-- Selected Works Section -->
+  <section class="selected-works">
+    <div class="works-wrapper">
+      <div class="works-header">
+        <h2 class="works-title">SELECTED WORKS</h2>
+        <a href="/work" class="view-all-btn">View all project ↗</a>
+      </div>
+      
+      <div class="cards-scroll" id="worksScroll">
+        <!-- Card 1: Drawing -->
+        <div class="work-card featured-card">
+          <div class="inner-card">
+            <span class="card-label">works</span>
+            <h3 class="card-title">DRAWING</h3>
+            <div class="drawing-visuals">
+              <div class="dark-circle"></div>
+              <div class="img-tilt img-tilt-1"></div>
+              <div class="img-tilt img-tilt-2"></div>
+            </div>
+            <a href="/work/drawing" class="more-btn">more ↗</a>
+          </div>
+        </div>
+        <!-- Card 2: Motion Graphic -->
+        <div class="work-card">
+          <div class="inner-card">
+            <span class="card-label">works</span>
+            <h3 class="card-title">MOTION GRAPHIC</h3>
+            <div class="standard-img"></div>
+            <a href="/work/motion-graphic" class="more-btn">more ↗</a>
+          </div>
+        </div>
+        <!-- Card 3: Graphic -->
+        <div class="work-card">
+          <div class="inner-card">
+            <span class="card-label">works</span>
+            <h3 class="card-title">GRAPHIC</h3>
+            <div class="standard-img"></div>
+            <a href="/work/graphic" class="more-btn">more ↗</a>
+          </div>
+        </div>
+        <!-- Card 4: Photo -->
+        <div class="work-card">
+          <div class="inner-card">
+            <span class="card-label">works</span>
+            <h3 class="card-title">PHOTO</h3>
+            <div class="standard-img"></div>
+            <a href="/work/photo" class="more-btn">more ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Custom Scrollbar -->
+      <div class="custom-scrollbar">
+        <div class="track">
+          <div class="thumb" id="worksThumb"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <!-- พื้นหลังภาพจำลองซ้าย-ขวา ตาม Wireframe -->
+    <div class="faq-bg">
+      <div class="faq-side left-side">
+        <div class="faq-row row-top">
+          <div class="wire-box"></div>
+          <div class="wire-box"></div>
+        </div>
+        <div class="faq-row row-bottom staggered-left">
+          <div class="wire-box"></div>
+          <div class="wire-box"></div>
+        </div>
+      </div>
+      <div class="faq-side right-side">
+        <div class="faq-row row-top">
+          <div class="wire-box"></div>
+          <div class="wire-box"></div>
+        </div>
+        <div class="faq-row row-bottom staggered-right">
+          <div class="wire-box"></div>
+          <div class="wire-box"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ส่วนเนื้อหาตรงกลาง -->
+    <div class="faq-center">
+      <span class="faq-label">SAY HI INCORPORATED</span>
+      <h2 class="faq-title text-gradient">FAQ</h2>
+      <button class="pill-btn btn-blue">DISCOVER TEAM</button>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Our Team Section -->
+  <section class="our-team-section">
+    <div class="team-bg-grid">
+      <div class="wire-box tall-box"></div>
+      <div class="wire-box tall-box"></div>
+      <div class="wire-box tall-box"></div>
+      <div class="wire-box tall-box"></div>
+      <div class="wire-box tall-box"></div>
+      <div class="wire-box tall-box"></div>
+      <div class="wire-box tall-box"></div>
+      <div class="wire-box tall-box"></div>
+      <div class="wire-box tall-box"></div>
+    </div>
+
+    <div class="team-overlay">
+      <h2 class="team-title text-gradient">OUR TEAM</h2>
+      <button class="pill-btn btn-gray">DISCOVER TEAM</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <!-- Logo Box -->
+        <div class="wire-box logo-box"></div>
+        <h2 class="footer-title-sayhi">SAY HI</h2>
+        <a href="mailto:KARNHIEND@GMAIL.COM" class="footer-email">KARNHIEND@GMAIL.COM</a>
+      </div>
+      <div class="footer-links">
+        <div class="link-col">
+          <h4 class="footer-heading">PAGES</h4>
+          <a href="/">HOME</a>
+          <a href="/work?category=graphic">GRAPHIC</a>
+          <a href="/work?category=production">PRODUCTION</a>
+          <a href="/work?category=website">WEBSITE</a>
+          <a href="/work?category=drawing">DRAWING</a>
+          <a href="/team">OUR TEAM</a>
+          <a href="/contact">CONTACT</a>
+        </div>
+        <div class="link-col">
+          <h4 class="footer-heading">CONTACT</h4>
+          <a href="#">LINKEDIN</a>
+          <a href="#">FACEBOOK</a>
+          <a href="#">INSTAGRAM</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
